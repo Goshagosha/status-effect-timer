@@ -12,8 +12,10 @@ Hooks.on("ready", function() {
 	let og = TokenHUD.prototype.activateListeners;
 	TokenHUD.prototype.activateListeners = (function(html) {
 		console.log("Status effect timer | " + "Trying to load HUD");
-		og(html);
-		/* do shit with html */
+		og.bind(this)(html);
+		html.find(".status-effects")
+			.on("dblclick", ".effect-control", placeholder.bind(this));
+
 		console.log("Status effect timer | " + "Loaded HUD");
 	});
 });
