@@ -9,5 +9,5 @@
   "scripts": ["./simple-5econs.js"],
   "url": "https://github.com/Goshagosha/simple-5econs",
 	"manifest": "https://raw.githubusercontent.com/Goshagosha/simple-5econs/master/module.json",
-	"download": "https://github.com/Goshagosha/simple-5econs/blob/master/simple-5econs.zip"
+	"download": "https://github.com/Goshagosha/simple-5econs/archive/master.zip"
 }
