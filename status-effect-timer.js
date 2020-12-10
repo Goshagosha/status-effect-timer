@@ -13,7 +13,7 @@ Hooks.on("ready", function() {
 	TokenHUD.prototype.activateListeners = (function(html) {
 		console.log("Status effect timer | " + "Trying to load HUD");
 		og(html);
+		/* do shit with html */
 		console.log("Status effect timer | " + "Loaded HUD");
-	}
-	);
+	});
 });
