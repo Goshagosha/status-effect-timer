@@ -62,11 +62,6 @@ const Simple5econs = (() => {
 			    icon:"modules/simple-5econs/icons/incapacitated.svg",
 			},
 			{
-			    label: "Inspiration",
-			    id: "inspiration",
-			    icon:"modules/simple-5econs/icons/inspiration.svg",
-			},
-			{
 			    label: "Invisible",
 			    id: "invisible",
 			    icon:"modules/simple-5econs/icons/invisible.svg",
@@ -105,11 +100,6 @@ const Simple5econs = (() => {
 			    label: "Unconscious",
 			    id: "unconscious",
 			    icon:"icons/svg/unconscious.svg",
-			},
-			{
-			    label: "Injured",
-			    id: "injured",
-			    icon:"icons/svg/blood.svg",
 			},
 			{
 			    label: "Dead",
