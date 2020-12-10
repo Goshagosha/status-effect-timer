@@ -16,6 +16,7 @@ const popDialog = async function(event, actor){
 	}
 	if (!game.combat) {
 		ui.notifications.warn("Status effect timer module can only be used in combat. This is a subject to change.");
+		return;
 	}
 
 	new Dialog({
