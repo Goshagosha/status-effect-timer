@@ -35,8 +35,8 @@ const popDialog = function(){
 Hooks.on("ready", function() {
 	let originalOnClick = TokenHUD.prototype._onClickStatusEffects;
 	TokenHUD.prototype._onClickStatusEffects = (function(event) {
-		originalOnClick.bind(this)(event);
 		if (!hasJustClicked) {
+			originalOnClick.bind(this)(event);
 			hasJustClicked = true;
 		}
 		setTimeout(function(){ hasJustClicked = false;}, 300);
