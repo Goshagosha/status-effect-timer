@@ -33,9 +33,10 @@ const popDialog = function(){
 Hooks.on("ready", function() {
 	let originalOnClick = TokenHUD.prototype._onClickStatusEffects;
 	TokenHUD.prototype._onClickStatusEffects = (function(event) {
-		if (event.originalEvent.detail < 2) {
-			originalOnClick.bind(this)(event);
+		if (event.originalEvent.detail > 1) {
+			return;
 		}
+		originalOnClick.bind(this)(event);
 	});
 	let originalActivateListeners = TokenHUD.prototype.activateListeners;
 	TokenHUD.prototype.activateListeners = (function(html) {
