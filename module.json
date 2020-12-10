@@ -1,0 +1,10 @@
+{
+  "name": "simple-status-icons",
+  "title": "Simple Status Icons",
+	"author": "Sky#9453: plagiated by Gosha",
+  "description": "Replaces default icons with better fitting to dnd 5e",
+  "version": 0.0.2",
+  "minimumCoreVersion": "0.7.8",
+	"compatibleCoreVersion": "0.7.8",
+  "scripts": ["./simple-status-icons.js"]
+}
