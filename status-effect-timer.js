@@ -4,7 +4,7 @@ const setTimer = function(t) {
 
 let hasJustClicked = false;
 
-const popDialog = function(){
+const popDialog = function(event){
 
 	new Dialog({
 		title: "Select duration (in rounds)",
@@ -35,7 +35,7 @@ const popDialog = function(){
 Hooks.on("ready", function() {
 	let originalToggle = TokenHUD.prototype._onToggleEffect;
 	TokenHUD.prototype._onToggleEffect = (function(event, {overlay=false}={}) {
-
+		event.
 		setTimeout(function(){ 
 			hasJustClicked = false;
 		}, 300);
@@ -48,6 +48,6 @@ Hooks.on("ready", function() {
 	TokenHUD.prototype.activateListeners = (function(html) {
 		originalActivateListeners.bind(this)(html);
 		html.find(".status-effects")
-			.on("dblclick", ".effect-control", popDialog.bind(this));
+			.on("dblclick", ".effect-control", event => popDialog.bind(event.));
 	});
 });
