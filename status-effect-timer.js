@@ -8,10 +8,15 @@ let hasJustClicked = false;
 const popDialog = async function(event, actor){
 
 	let effectTitle = event.currentTarget.title;	
-	console.log("GONNA LOOK FOR " + effectTitle);
 	let effect = await actor.effects.find(ef => ef.data.label === effectTitle);
-	console.log("GONNA FOUND ");
-	console.log(effect);
+
+	if (!effect) {
+		ui.notifications.error("Something went wrong! Effect was not found on the token.");
+		return;
+	}
+	if (!game.combat) {
+		ui.notifications.warn("Status effect timer module can only be used in combat. This is a subject to change.");
+	}
 
 	new Dialog({
 		title: "Select duration (in rounds)",
