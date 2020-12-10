@@ -1,7 +1,3 @@
-const tmp_d = function(message) {
-	console.log("Status effect timer | " + message)
-}
-
 const placeholder = function(context) {
 	alert("place is held!");
 }
@@ -17,9 +13,9 @@ Hooks.on("ready", function() {
 	TokenHUD.prototype.activateListeners = (function(html) {
 		let og = TokenHUD.prototype.activateListeners;
 		return function(html) {
-			tmp_d("Trying to load HUD");
+			console.log("Status effect timer | " + "Trying to load HUD");
 			og(html);
-			tmp_d("Loaded HUD");
+			console.log("Status effect timer | " + "Loaded HUD");
 		}
 	}
 	);
