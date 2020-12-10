@@ -35,7 +35,6 @@ const popDialog = function(event){
 Hooks.on("ready", function() {
 	let originalToggle = TokenHUD.prototype._onToggleEffect;
 	TokenHUD.prototype._onToggleEffect = (function(event, {overlay=false}={}) {
-		event.
 		setTimeout(function(){ 
 			hasJustClicked = false;
 		}, 300);
@@ -48,6 +47,6 @@ Hooks.on("ready", function() {
 	TokenHUD.prototype.activateListeners = (function(html) {
 		originalActivateListeners.bind(this)(html);
 		html.find(".status-effects")
-			.on("dblclick", ".effect-control", event => popDialog.bind(event.));
+			.on("dblclick", ".effect-control", event => popDialog.bind(this)(event));
 	});
 });
