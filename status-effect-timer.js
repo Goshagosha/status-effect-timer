@@ -7,9 +7,11 @@ const placeholder = function(context) {
 }
 
 const CustomActivateListeners = function(html) {
+	tmp_d("Trying to load HUD");
 	TokenHUD.prototype.activateListeners(html);
-	html.find(".status-effects")
-		.on("dblclick", ".effect-control", this.placeholder.bind(this));
+	tmp_d("Loaded HUD");
+	//html.find(".status-effects")
+	//	.on("dblclick", ".effect-control", this.placeholder.bind(this));
 }
 
 Hooks.on("ready", function() {
