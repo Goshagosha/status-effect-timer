@@ -1,5 +1,9 @@
 require(TokenHUD);
 
+const d = function(message) {
+	console.log("Status effect timer | " + message)
+}
+
 const Simple5econs = (() => {
 
 	const timerSelection = function(context) {
@@ -8,6 +12,7 @@ const Simple5econs = (() => {
 
 
 	const overrideOnClickListener = function(html) {
+		d("overide working");
 		TokenHUD.activateListeners(html);
 		html.find(".status-effects")
 			.on("dblclick", ".effect-control", timerSelection.bind(this));
@@ -15,6 +20,7 @@ const Simple5econs = (() => {
 	
   // HOOKS  
   Hooks.on("ready", function() {
+		d("Hook activated");
 		TokenHUD.activateListeners = overrideOnClickListener;
   });
 })();
