@@ -9,8 +9,8 @@ const CustomActivateListeners = function(html) {
 }
 
 Hooks.on("ready", function() {
+	let og = TokenHUD.prototype.activateListeners;
 	TokenHUD.prototype.activateListeners = (function(html) {
-		let og = TokenHUD.prototype.activateListeners;
 		console.log("Status effect timer | " + "Trying to load HUD");
 		og(html);
 		console.log("Status effect timer | " + "Loaded HUD");
