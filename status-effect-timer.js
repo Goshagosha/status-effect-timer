@@ -9,7 +9,6 @@ const CustomActivateListeners = function(html) {
 }
 
 Hooks.on("ready", function() {
-	tmp_d("Hook activated");
 	TokenHUD.prototype.activateListeners = (function(html) {
 		let og = TokenHUD.prototype.activateListeners;
 		return function(html) {
