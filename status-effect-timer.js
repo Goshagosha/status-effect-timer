@@ -33,11 +33,11 @@ const popDialog = function(){
 }
 
 Hooks.on("ready", function() {
-	let originalOnClick = TokenHUD.prototype._onClickStatusEffects;
-	TokenHUD.prototype._onClickStatusEffects = (function(event) {
+	let originalToggle = TokenHUD.prototype._onToggleEffect;
+	TokenHUD.prototype._onToggleEffect = (function(event) {
 		if (!hasJustClicked) {
 			console.log("Registering the event");
-			originalOnClick.bind(this)(event);
+			originalToggle.bind(this)(event);
 			hasJustClicked = true;
 		}
 		console.log("Timeout activated");
