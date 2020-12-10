@@ -1,105 +1,105 @@
-const SimpleStatusIcons = (() => {
+const Simple5econs = (() => {
 	const defineStatusIcons = function(data) {
 		window.CONFIG.statusEffects = [
 			{
 			    label: "Blinded", 
 			    id: "blinded", 
-			    icon: "modules/simple-status-icons/icons/blinded.svg",
+			    icon: "modules/simple-5econs/icons/blinded.svg",
 			},
 			{
 			    label: "Charmed",
 			    id: "charmed",
-			    icon: "modules/simple-status-icons/icons/charmed.svg", 
+			    icon: "modules/simple-5econs/icons/charmed.svg", 
 			},
 			{
 			    label:  "Concentrating",
 			    id:  "concentrating",
-			    icon: "modules/simple-status-icons/icons/concentrating.svg",
+			    icon: "modules/simple-5econs/icons/concentrating.svg",
 			},
 			{
 			    label:  "Deafened", 
 			    id:  "deafened", 
-			    icon: "modules/simple-status-icons/icons/deafened.svg", 
+			    icon: "modules/simple-5econs/icons/deafened.svg", 
 			},
 			{
 			    label: "Exhaustion 1",
 			    id: "exhaustion 1",
-			    icon:"modules/simple-status-icons/icons/exhaustion1.svg",
+			    icon:"modules/simple-5econs/icons/exhaustion1.svg",
 			},
 			{
 			    label: "Exhaustion 2",
 			    id: "exhaustion 2",
-			    icon:"modules/simple-status-icons/icons/exhaustion2.svg",
+			    icon:"modules/simple-5econs/icons/exhaustion2.svg",
 			},
 			{
 			    label: "Exhaustion 3",
 			    id: "exhaustion 3",
-			    icon:"modules/simple-status-icons/icons/exhaustion3.svg",
+			    icon:"modules/simple-5econs/icons/exhaustion3.svg",
 			},
 			{
 			    label: "Exhaustion 4",
 			    id: "exhaustion 4",
-			    icon:"modules/simple-status-icons/icons/exhaustion4.svg",
+			    icon:"modules/simple-5econs/icons/exhaustion4.svg",
 			},
 			{
 			    label: "Exhaustion 5",
 			    id: "exhaustion 5",
-			    icon:"modules/simple-status-icons/icons/exhaustion5.svg",
+			    icon:"modules/simple-5econs/icons/exhaustion5.svg",
 			},
 			{
 			    label: "Frightened",
 			    id: "frightened",
-			    icon:"modules/simple-status-icons/icons/frightened.svg",
+			    icon:"modules/simple-5econs/icons/frightened.svg",
 			},
 			{
 			    label: "Grappled",
 			    id: "grappled",
-			    icon:"modules/simple-status-icons/icons/grappled.svg",
+			    icon:"modules/simple-5econs/icons/grappled.svg",
 			},
 			{
 			    label: "Incapacitated",
 			    id: "incapacitated",
-			    icon:"modules/simple-status-icons/icons/incapacitated.svg",
+			    icon:"modules/simple-5econs/icons/incapacitated.svg",
 			},
 			{
 			    label: "Inspiration",
 			    id: "inspiration",
-			    icon:"modules/simple-status-icons/icons/inspiration.svg",
+			    icon:"modules/simple-5econs/icons/inspiration.svg",
 			},
 			{
 			    label: "Invisible",
 			    id: "invisible",
-			    icon:"modules/simple-status-icons/icons/invisible.svg",
+			    icon:"modules/simple-5econs/icons/invisible.svg",
 			},
 			{
 			    label: "Paralyzed",
 			    id: "paralyzed",
-			    icon:"modules/simple-status-icons/icons/paralyzed.svg",
+			    icon:"modules/simple-5econs/icons/paralyzed.svg",
 			},
 			{
 			    label: "Petrified",
 			    id: "petrified",
-			    icon:"modules/simple-status-icons/icons/petrified.svg",
+			    icon:"modules/simple-5econs/icons/petrified.svg",
 			},
 			{
 			    label: "Poisoned",
 			    id: "poisoned",
-			    icon:"modules/simple-status-icons/icons/poisoned.svg",
+			    icon:"modules/simple-5econs/icons/poisoned.svg",
 			},
 			{
 			    label: "Prone",
 			    id: "prone",
-			    icon:"modules/simple-status-icons/icons/prone.svg",
+			    icon:"modules/simple-5econs/icons/prone.svg",
 			},
 			{
 			    label: "Restrained",
 			    id: "restrained",
-			    icon:"modules/simple-status-icons/icons/restrained.svg",
+			    icon:"modules/simple-5econs/icons/restrained.svg",
 			},
 			{
 			    label: "Stunned",
 			    id: "stunned",
-			    icon:"modules/simple-status-icons/icons/stunned.svg",
+			    icon:"modules/simple-5econs/icons/stunned.svg",
 			},
 			{
 			    label: "Unconscious",

@@ -1,10 +1,13 @@
 {
-  "name": "simple-status-icons",
-  "title": "Simple Status Icons",
-	"author": "Sky#9453: plagiated by Gosha",
+  "name": "simple-5econs",
+  "title": "Simple Status Icons: gosha's fork",
+	"author": "Sky plagiated by Gosha",
   "description": "Replaces default icons with better fitting to dnd 5e",
-  "version": 0.0.2",
+  "version": 0.0.1",
   "minimumCoreVersion": "0.7.8",
 	"compatibleCoreVersion": "0.7.8",
-  "scripts": ["./simple-status-icons.js"]
+  "scripts": ["./simple-5econs.js"],
+  "url": "https://github.com/Goshagosha/simple-5econs",
+	"manifest": "https://raw.githubusercontent.com/Goshagosha/simple-5econs/master/module.json",
+	"download": "https://github.com/Goshagosha/simple-5econs/simple-5econs.zip"
 }
