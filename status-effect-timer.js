@@ -1,20 +1,20 @@
-const d = function(message) {
+const tmp_d = function(message) {
 	console.log("Status effect timer | " + message)
 }
 
-const timerSelection = function(context) {
-	alert("HELLO WORLD!");
+const placeholder = function(context) {
+	alert("place is held!");
 }
 
 class ExtHud extends TokenHUD {
 	activateListeners(html) {
 		super.activateListeners(html);
 		html.find(".status-effects")
-			.on("dblclick", ".effect-control", this.timerSelection.bind(this));
+			.on("dblclick", ".effect-control", this.placeholder.bind(this));
 	}
 }
 
 Hooks.on("ready", function() {
-	d("Hook activated");
+	tmp_d("Hook activated");
 	TokenHUD = ExtHud;
 });
