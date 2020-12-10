@@ -40,7 +40,7 @@ Hooks.on("ready", function() {
 		}, 300);
 		if (!hasJustClicked) {
 			hasJustClicked = true;
-			return originalToggle(event, {overlay=false}={});
+			return originalToggle.bind(this)(event, {overlay=false}={});
 		}
 	});
 	let originalActivateListeners = TokenHUD.prototype.activateListeners;
