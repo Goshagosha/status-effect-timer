@@ -40,13 +40,13 @@ Hooks.on("ready", function() {
 		}, 300);
 		if (!hasJustClicked) {
 			hasJustClicked = true;
-			return originalToggle.bind(this)(event, {overlay=false}={});
+			return originalToggle(event, {overlay=false}={});
 		}
 	});
 	let originalActivateListeners = TokenHUD.prototype.activateListeners;
 	TokenHUD.prototype.activateListeners = (function(html) {
 		originalActivateListeners.bind(this)(html);
 		html.find(".status-effects")
-			.on("dblclick", ".effect-control", event => popDialog.bind(this)(event));
+			.on("dblclick", ".effect-control", event => popDialog(event));
 	});
 });
