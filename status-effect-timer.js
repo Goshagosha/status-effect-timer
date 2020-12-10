@@ -7,7 +7,7 @@ const placeholder = function(context) {
 }
 
 CustomActivateListeners = function(html) {
-	super.activateListeners(html);
+	TokenHUD.prototype.activateListeners(html);
 	html.find(".status-effects")
 		.on("dblclick", ".effect-control", this.placeholder.bind(this));
 }
