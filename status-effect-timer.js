@@ -1,5 +1,5 @@
 const setTimer = function(t) {
-    alert("chosen");
+	console.log(t);
 }
 
 const popDialog = function(){
@@ -31,13 +31,16 @@ const popDialog = function(){
 }
 
 Hooks.on("ready", function() {
-	let og = TokenHUD.prototype.activateListeners;
+	let originalOnClick = TokenHUD.prototype._onClickStatusEffects;
+	TokenHUD.prototype._onClickStatusEffects = (function(event) {
+		if (event.originalEvent.detail < 2) {
+			originalOnClick.bind(this)(event);
+		}
+	});
+	let originalActivateListeners = TokenHUD.prototype.activateListeners;
 	TokenHUD.prototype.activateListeners = (function(html) {
-		console.log("Status effect timer | " + "Trying to load HUD");
-		og.bind(this)(html);
+		originalActivateListeners.bind(this)(html);
 		html.find(".status-effects")
-			.on("dblclick", ".effect-control", placeholder.bind(this));
-
-		console.log("Status effect timer | " + "Loaded HUD");
+			.on("dblclick", ".effect-control", popDialog.bind(this));
 	});
 });
