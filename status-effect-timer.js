@@ -36,10 +36,15 @@ Hooks.on("ready", function() {
 	let originalOnClick = TokenHUD.prototype._onClickStatusEffects;
 	TokenHUD.prototype._onClickStatusEffects = (function(event) {
 		if (!hasJustClicked) {
+			console.log("Registering the event");
 			originalOnClick.bind(this)(event);
 			hasJustClicked = true;
 		}
-		setTimeout(function(){ hasJustClicked = false;}, 300);
+		console.log("Timeout activated");
+		setTimeout(function(){ 
+			hasJustClicked = false;
+			console.log("Timeout done!");
+		}, 300);
 	});
 	let originalActivateListeners = TokenHUD.prototype.activateListeners;
 	TokenHUD.prototype.activateListeners = (function(html) {
