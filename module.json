@@ -1,13 +1,13 @@
 {
-  "name": "simple-5econs",
-  "title": "Simple Status Icons: gosha's fork",
+  "name": "status-effect-timer",
+  "title": "Status effect timer",
 	"author": "Goshagosha",
-  "description": "Replaces default icons with better fitting to dnd 5e",
+  "description": "Pops out a dialog suggesting you to change AE duration when activating a status effect icon from token hud. Needs DAE to work, as DAE automatically creates AE on icon activation.",
   "version": "0.0.1",
   "minimumCoreVersion": "0.7.8",
 	"compatibleCoreVersion": "0.7.8",
-  "scripts": ["./simple-5econs.js"],
-  "url": "https://github.com/Goshagosha/simple-5econs",
-	"manifest": "https://raw.githubusercontent.com/Goshagosha/simple-5econs/master/module.json",
-	"download": "https://github.com/Goshagosha/simple-5econs/archive/master.zip"
+  "scripts": ["./status-effect-timer.js"],
+  "url": "https://github.com/Goshagosha/status-effect-timer",
+	"manifest": "https://raw.githubusercontent.com/Goshagosha/status-effect-timer/master/module.json",
+	"download": "https://github.com/Goshagosha/status-effect-timer/archive/master.zip"
 }
