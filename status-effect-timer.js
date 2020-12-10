@@ -1,10 +1,17 @@
-const setTimer = function(t) {
-	console.log(t);
+const setTimer = function(e, t) {
+	let currentRound = game.combat.current.round;
+	e.update({duration : {rounds : t, startRound : currentRound}});
 }
 
 let hasJustClicked = false;
 
-const popDialog = function(event){
+const popDialog = async function(event, actor){
+
+	let effectTitle = event.currentTarget.title;	
+	console.log("GONNA LOOK FOR " + effectTitle);
+	let effect = await actor.effects.find(ef => ef.data.label === effectTitle);
+	console.log("GONNA FOUND ");
+	console.log(effect);
 
 	new Dialog({
 		title: "Select duration (in rounds)",
@@ -12,19 +19,19 @@ const popDialog = function(event){
 			one: {
 				label: "One",
 				callback: (html) => {
-					setTimer(2);
+					setTimer(effect, 2);
 				}
 			},
 			ten: {
 				label: "Ten",
 				callback: (html) => {
-					setTimer(10);
+					setTimer(effect, 10);
 				}
 			},
 			hundred: {
 				label: "Hundred",
 				callback: (html) => {
-					setTimer(100);
+					setTimer(effect, 100);
 				}
 			}
 		},
@@ -47,6 +54,6 @@ Hooks.on("ready", function() {
 	TokenHUD.prototype.activateListeners = (function(html) {
 		originalActivateListeners.bind(this)(html);
 		html.find(".status-effects")
-			.on("dblclick", ".effect-control", event => popDialog(event));
+			.on("dblclick", ".effect-control", event => popDialog(event, this.object.actor));
 	});
 });
