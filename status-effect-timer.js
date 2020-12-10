@@ -6,7 +6,7 @@ const placeholder = function(context) {
 	alert("place is held!");
 }
 
-CustomActivateListeners = function(html) {
+const CustomActivateListeners = function(html) {
 	TokenHUD.prototype.activateListeners(html);
 	html.find(".status-effects")
 		.on("dblclick", ".effect-control", this.placeholder.bind(this));
