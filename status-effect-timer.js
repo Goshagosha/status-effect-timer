@@ -1,6 +1,23 @@
 const setTimer = function(e, t) {
 	let currentRound = game.combat.current.round;
-	e.update({duration : {rounds : t, startRound : currentRound}});
+	let currentTurn = game.combat.current.turn;
+	switch(t) {
+		case "0-eon":
+			e.update({duration : {
+				turns: game.combat.turns.length,
+				rounds: 0,
+				startTurn: currentTurn, 
+				startRound : currentRound}
+			});
+			break;
+		case "0-10":
+			e.update({duration : {
+				rounds: 10, 
+				startTurn: currentTurn, 
+				startRound : currentRound}
+			});
+			break;
+	}
 }
 
 let hasJustClicked = false;
@@ -20,28 +37,22 @@ const popDialog = async function(event, actor){
 	}
 
 	new Dialog({
-		title: "Select duration (in rounds)",
+		title: "Select duration",
 		buttons: {
-			one: {
-				label: "One",
+			a: {
+				label: "End of next turn",
 				callback: (html) => {
-					setTimer(effect, 2);
-				}
+					setTimer(effect, "0-eon");
+				},
 			},
-			ten: {
-				label: "Ten",
+			b: {
+				label: "10 rounds",
 				callback: (html) => {
-					setTimer(effect, 10);
-				}
-			},
-			hundred: {
-				label: "Hundred",
-				callback: (html) => {
-					setTimer(effect, 100);
-				}
+					setTimer(effect, "0-10");
+				},
 			}
 		},
-		default: "one"    
+		default: "a",
 	}).render(true)
 }
 
@@ -63,3 +74,22 @@ Hooks.on("ready", function() {
 			.on("dblclick", ".effect-control", event => popDialog(event, this.object.actor));
 	});
 });
+
+const removeFinishedEffects = async function() {
+	let participants = await game.combat.turns.length;
+	let currentTurn = await game.combat.turn;
+	let prevFid = (participants+currentTurn-1)%participants;
+	let actor = await game.combat.turns[prevFid].actor;	
+	actor.effects.filter(e => e.duration.remaining != null && e.duration.remaining <= 0).forEach(async (e) => {e.delete()});
+}
+
+
+let lastTurnProcessed = -1;
+
+Hooks.on("getCombatTrackerEntryContext", () => {
+		if (lastTurnProcessed != game.combat.turn) {
+			lastTurnProcessed = game.combat.turn;
+			removeFinishedEffects();
+		}
+	}
+);
