@@ -1,3 +1,6 @@
+MODULE_ID='status-effect-timer';
+
+
 const setTimer = function(e, t) {
 	let currentRound = game.combat.current.round;
 	let currentTurn = game.combat.current.turn;
@@ -20,7 +23,6 @@ const setTimer = function(e, t) {
 	}
 }
 
-let hasJustClicked = false;
 
 const popDialog = async function(event, actor){
 
@@ -56,22 +58,41 @@ const popDialog = async function(event, actor){
 	}).render(true)
 }
 
+
+let hasJustClicked = false;
+
 Hooks.on("ready", function() {
-	let originalToggle = TokenHUD.prototype._onToggleEffect;
-	TokenHUD.prototype._onToggleEffect = (function(event, {overlay=false}={}) {
+	libWrapper.register(MODULE_ID, 'TokenHUD.prototype._onToggleEffect', function(_onToggleEffect, ...args) {
 		setTimeout(function(){ 
 			hasJustClicked = false;
 		}, 300);
 		if (!hasJustClicked) {
 			hasJustClicked = true;
-			return originalToggle.bind(this)(event, {overlay=false}={});
+		} else {
+			return;
 		}
+		return _onToggleEffect.apply(this, args);
 	});
-	let originalActivateListeners = TokenHUD.prototype.activateListeners;
-	TokenHUD.prototype.activateListeners = (function(html) {
-		originalActivateListeners.bind(this)(html);
+});
+
+Hooks.on("ready", function() {
+	let ogAL = TokenHUD.prototype.activateListeners;
+	libWrapper.register(MODULE_ID, 'TokenHUD.prototype.activateListeners', function(activateListeners, ...args) {
+		let html = $(args[1]);
+		var mytimeout;
+		ogAL.bind(this)(html);
+		/*
+		html.find(".effects > img").hover(() => {
+			mytimeout = setTimeout(function(){
+			//			this._onClickStatusEffects.bind(this)
+					}, 500);
+				}, () => {
+					clearTimeout(mytimeout);
+				});
+		*/
 		html.find(".status-effects")
 			.on("dblclick", ".effect-control", event => popDialog(event, this.object.actor));
+		return activateListeners.apply(this, args);
 	});
 });
 
