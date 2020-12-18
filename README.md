@@ -1,6 +1,12 @@
 ## Status effect timer
 
-Use double click on the token hud status icons to select the duration of the effect.
-Currently only works in combat, and only has 2 options: 1 round (uses turns instead in fact) and 10 rounds. Written for dnd 5e.  
-  
+This is a hacky and lightweight alternative to DAE + MidiQoL functionalities of timed status effects and concentration for low automation setups.
+It does not set any active effects on tokens.
+
+Only works in combat, because why would you mechanically, instead of narratively, track time of spell effects on characters?
+
+Make sure the character is in the combat tracker.
+Shift-click a status effect on the token hud. Optionally select relative to whom is the timer supposed to count. It defaults to the current turn, but the option is open in case you want to keep combat going, or forgot to set the status effect right away.
+Two buttons to choose from, written with DnD 5e spells in mind: until the end of their next turn, or 10 rounds.
+
 https://github.com/Goshagosha/status-effect-timer/raw/master/module.json

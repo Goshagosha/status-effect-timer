@@ -1,8 +1,24 @@
 //TODO: "Activate concentration for ..." [x] form
-//TODO: "Proper rounds handling"
+//TODO: Proper rounds handling
 //TODO: "End of their next turn" and "End of caster's next turn"
+const applyConcToCaster = async function(caster, duration) {
 
-const setTimerX = async function(actor, effectTitle, relativeTo) {
+	let data = {
+		"flags": {
+			"core": {
+			"statusId": "concentrating"
+			}
+		},
+		"changes": [],
+		"duration": duration,
+		"icon": "modules/simple-5econs/icons/concentrating.svg",
+		"label": "Concentrating"
+	};
+	await caster.createEmbeddedEntity("ActiveEffect", data);
+}
+
+
+const setTimerX = async function(actor, effectTitle, relativeTo, concToCaster) {
 	let effect = await actor.effects.find(ef => ef.data.label === effectTitle);
 	if (!effect) {
 		ui.notifications.error("Something went wrong! Effect was not found on the token.");
@@ -10,15 +26,20 @@ const setTimerX = async function(actor, effectTitle, relativeTo) {
 	}
 	let currentRound = game.combat.current.round;
 	let currentTurn = game.combat.current.turn;
-	effect.update({duration : {
+	let duration = {
 		rounds: 10, 
 		turns: 1,
 		startTurn: relativeTo, 
-		startRound : relativeTo <= currentTurn ? currentRound : currentRound - 1 }
-	});
+		startRound : relativeTo <= currentTurn ? currentRound : currentRound - 1
+	};
+	effect.update({duration : duration});
+	if (concToCaster){
+		applyConcToCaster(await game.combat.turns[relativeTo].actor, duration);
+	};
+
 }
 
-const setTimerEndOfTurn = async function(actor, effectTitle, relativeTo) {
+const setTimerEndOfTurn = async function(actor, effectTitle, relativeTo, concToCaster) {
 	let effect = await actor.effects.find(ef => ef.data.label === effectTitle);
 	if (!effect) {
 		ui.notifications.error("Something went wrong! Effect was not found on the token.");
@@ -26,13 +47,16 @@ const setTimerEndOfTurn = async function(actor, effectTitle, relativeTo) {
 	}
 	let currentRound = game.combat.current.round;
 	let currentTurn = game.combat.current.turn;
-	effect.update({duration : {
+	let duration = {
 		turns: game.combat.turns.length+1,
 		rounds: 0,
-		startTurn: currentTurn, 
-		startRound : relativeTo <= currentTurn ? currentRound : currentRound - 1 }
-
-	});
+		startTurn: relativeTo, 
+		startRound : relativeTo <= currentTurn ? currentRound : currentRound - 1
+	};
+	effect.update({duration : duration});
+	if (concToCaster){
+		applyConcToCaster(await game.combat.turns[relativeTo].actor, duration);
+	};
 }
 
 
@@ -51,7 +75,8 @@ const popDialog = function(event, actor){
 		var defaultSelected = game.combat.turn;
 		$("#relativeToSelector").val(defaultSelected);
 	});
-	let cont = `Relative to <select name="relativeToSelector" id="relativeToSelector">${fighterOptions}</select>'s turn:`;
+	let cont = `Relative to: <select name="relativeToSelector" id="relativeToSelector">${fighterOptions}</select>
+	</br><input type="checkbox" name="applyConc" id="applyConc"> apply to ⇑them⇑ concentration`;
 
 	new Dialog({
 		title: "Select duration",
@@ -60,13 +85,13 @@ const popDialog = function(event, actor){
 			a: {
 				label: "End of next turn",
 				callback: (html) => {
-					setTimerEndOfTurn(actor, event.currentTarget.title, document.getElementById("relativeToSelector").value);
+					setTimerEndOfTurn(actor, event.currentTarget.title, document.getElementById("relativeToSelector").value, document.getElementById("applyConc").checked);
 				},
 			},
 			b: {
 				label: "10 rounds",
 				callback: (html) => {
-					setTimerX(actor, event.currentTarget.title, document.getElementById("relativeToSelector").value);
+					setTimerX(actor, event.currentTarget.title, document.getElementById("relativeToSelector").value, document.getElementById("applyConc").checked);
 				},
 			}
 		},
@@ -76,12 +101,12 @@ const popDialog = function(event, actor){
 
 Hooks.on("ready", function() {
 	let originalToggle = TokenHUD.prototype._onToggleEffect;
-	TokenHUD.prototype._onToggleEffect = (function(event, {overlay=false}={}) {
+	TokenHUD.prototype._onToggleEffect = (function(event, overlay) {
 		originalToggle.bind(this);
 		if (event.shiftKey) {
 			popDialog(event,this.object.actor);
 		}
-		return originalToggle.bind(this)(event, {overlay=false}={});
+		return originalToggle.bind(this)(event, overlay);
 	});
 });
 
