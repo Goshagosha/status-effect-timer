@@ -1,6 +1,3 @@
-//TODO: "Activate concentration for ..." [x] form
-//TODO: Proper rounds handling
-//TODO: "End of their next turn" and "End of caster's next turn"
 const applyConcToCaster = async function(caster, duration) {
 
 	let data = {
@@ -76,7 +73,7 @@ const popDialog = function(event, actor){
 		$("#relativeToSelector").val(defaultSelected);
 	});
 	let cont = `Relative to: <select name="relativeToSelector" id="relativeToSelector">${fighterOptions}</select>
-	</br><input type="checkbox" name="applyConc" id="applyConc"> apply to ⇑them⇑ concentration`;
+	</br><input type="checkbox" name="applyConc" id="applyConc"> apply to ⇑them⇑ a concentration effect for the same duration.`;
 
 	new Dialog({
 		title: "Select duration",
