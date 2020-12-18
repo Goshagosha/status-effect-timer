@@ -10,3 +10,5 @@ Shift-click a status effect on the token hud. Optionally select relative to whom
 Two buttons to choose from, written with DnD 5e spells in mind: until the end of their next turn, or 10 rounds.
 
 https://github.com/Goshagosha/status-effect-timer/raw/master/module.json
+
+![2020-12-19-000008_619x507_scrot](https://user-images.githubusercontent.com/33848913/102669073-e1d5a000-418d-11eb-864b-617bfa0cc49c.png)
